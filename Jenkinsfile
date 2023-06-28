@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // Checkout the source code from your repository
                 checkout scm
             }
         }
@@ -11,13 +12,17 @@ pipeline {
         stage('Add Files') {
             steps {
                 script {
-                    file('index.php').copyTo("${env.WORKSPACE}/index.php")
+                    // Copy index.php to the workspace
+                    file('index.php').copy("${env.WORKSPACE}/index.php")
                     
+                    // Optionally, you can print a message indicating the file was added
                     echo "Added index.php to workspace"
                 }
             }
         }
         
+        // Additional stages for your pipeline...
     }
     
+    // Post-build actions, notifications, etc.
 }
