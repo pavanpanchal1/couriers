@@ -2,27 +2,22 @@ pipeline {
     agent any
     
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        
         stage('Add Files') {
             steps {
                 script {
-                    // Specify the files to be added
-                    def filesToAdd = ['home.php']
+                    file('index.php').copyTo("${env.WORKSPACE}/index.php")
                     
-                    // Loop through the files and add them to the workspace
-                    for (String file : filesToAdd) {
-                        if (fileExists(file)) {
-                            file(file).copyTo("${env.WORKSPACE}/${file}")
-                            echo "Added file: ${file}"
-                        } else {
-                            error "File not found: ${file}"
-                        }
-                    }
+                    echo "Added index.php to workspace"
                 }
             }
         }
         
-        // Additional stages for your pipeline...
     }
     
-    // Post-build actions, notifications, etc.
 }
