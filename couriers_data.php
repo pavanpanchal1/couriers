@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 // require 'home.php';
 
 require 'con.php';
-$sql = "SELECT c.id, c.description, c.weight, c.status, c.delivery_date, 
+$sql = "SELECT c.couriers_id, c.description, c.weight, c.status, c.delivery_date, 
         s.sender_id, s.sender_name, s.sender_address, s.sender_phone, s.sender_email,
         r.receiver_id, r.receiver_name, r.receiver_address, r.receiver_phone, r.receiver_email
         FROM couriers c
@@ -29,9 +29,9 @@ if (mysqli_num_rows($result) > 0) {
         </tr>";
 
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($track_id == $row['id']) {
+        if ($track_id == $row['couriers_id']) {
             echo "<tr>";
-            echo "<td>" . $row['id'] . "</td>";
+            echo "<td>" . $row['couriers_id'] . "</td>";
             echo "<td>" . " Description: " . $row['description'] .
                 "<br>" . " Weight: " . $row['weight'] .
                 "<br>" . " Delivery Date: " . $row['delivery_date'] .

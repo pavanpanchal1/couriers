@@ -94,24 +94,28 @@
     require 'home.php';
 
     require 'con.php';
-    // $query = "SELECT * FROM `senders` JOIN `receivers` ON `sender_id` = `receiver_id`;";
+    if (isset($_REQUEST['description'])) {
+        $query = "SELECT * FROM `senders` JOIN `receivers` ON `sender_id` = `receiver_id`;";
+        // echo $query;
+        $result = mysqli_query($con, $query);
 
-    // $result = mysqli_query($con, $query);
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
 
-    // if (mysqli_num_rows($result) > 0) {
-    //     // Iterate through each row of the result set
-    //     while ($row = mysqli_fetch_assoc($result)) {
+            }
+        } else {
+            echo "No couriers found.";
+        }
 
+        mysqli_close($con);
+        exit;
 
-    //     }
-    // } else {
-    //     echo "No couriers found.";
-    // }
-    // // Close the database connection
-    // mysqli_close($con);
+    }
     ?>
     <div class="container">
         <div class="form">
+            <label for="">Couriers details</label>
+
             <form action="" method="post">
                 <input type="hidden" name="sender_id" value="">
                 <input type="hidden" name="receiver_id" value="">
@@ -145,8 +149,6 @@
         </div>
     </div>
 </body>
-<?php
-// }
-?>
+
 
 </html>
