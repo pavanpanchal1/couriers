@@ -13,8 +13,7 @@ pipeline {
             steps {
                 script {
                     // Copy index.php to the workspace
-                    file('index.php').copy("${env.WORKSPACE}/index.php")
-                    
+                    file('index.php')
                     // Optionally, you can print a message indicating the file was added
                     echo "Added index.php to workspace"
                 }
