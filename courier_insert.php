@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title></title>
     <style>
         * {
             margin: 0;
@@ -20,6 +20,7 @@
             min-height: 100%;
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
+            overflow: hidden;
 
         }
 
@@ -40,7 +41,8 @@
         input[type=text],
         input[type=tel],
         input[type=email],
-        input[type=password] {
+        input[type=password],
+        select {
             outline: none;
             border: none;
             width: 400px;
@@ -51,6 +53,11 @@
             position: relative;
             margin-top: 20px;
 
+        }
+
+        select {
+            height: 40px;
+            width: 415px;
         }
 
         input[type=submit] {
@@ -90,7 +97,7 @@
         }
 
         .list {
-            width: 50%;
+            width: 70%;
             margin: auto;
         }
 
@@ -130,19 +137,64 @@
 </head>
 
 <body>
-    <div class="nav">
-        <div class="list">
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="sender.php">Senders</a></li>
-                <li><a href="receivers.php">Receivers</a></li>
-                <li><a href="couriers.php">Courier</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="page">
-        <img src="images/img1.png" alt="">
+    <?php
+    error_reporting(E_ALL);
+    ini_set('desplay_errors', 1);
+
+    require 'con.php';
+
+    if (isset($_REQUEST['desription '])) {
+        
+        $description = stripslashes($_REQUEST['description']);
+        $description = mysqli_real_escape_string($con, $desription);
+
+        $weight = stripslashes($_REQUEST['weight']);
+        $weight = mysqli_real_escape_string($con, $weight);
+
+        $status = stripslashes($_REQUEST['status']);
+        $status = mysqli_real_escape_string($con, $status);
+
+        $location = stripslashes($_REQUEST['location']);
+        $location = mysqli_real_escape_string($con, $location);
+
+        $query = "INSERT into `couriers`(description, weight,dalivery_date,status,location) VALUES('$description','$weight','$delivery_date','$status','$location');";
+        $result = mysqli_query($con, $query);
+        if ($result) {
+            echo "success";
+        } else {
+            die("Error: " . mysqli_error($con));
+        }
+    }
+    ?>
+    <div class="container">
+        <form action="" method="post">
+            <div class="form">
+                <input type="hidden" name="courier_id">
+                <div class="desription">
+                    <input type="text" name="description" id="description" placeholder="description">
+
+                </div>
+                <div class="weight">
+                    <input type="text" placeholder="Enter weight in kg">
+                </div>
+                <div class="select">
+                    <select name="status" id="status">
+                        <option value="" name="status">select</option>
+                        <option value="" name="status">Pending</option>
+                        <option value="" name="status">In transit</option>
+                        <option value="" name="status">Deliverd</option>
+                    </select>
+                </div>
+                <div class="location">
+                    <input type="text" name="location" id="location" placeholder="Enter location">
+                </div>
+
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
     </div>
 </body>
+
 
 </html>

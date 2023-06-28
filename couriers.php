@@ -95,20 +95,16 @@
 
     require 'con.php';
     if (isset($_REQUEST['description'])) {
-        $query = "SELECT * FROM `senders` JOIN `receivers` ON `sender_id` = `receiver_id`;";
-        // echo $query;
+        $sender_id = $_REQUEST['sender_id'];
+        $description = $_REQUEST['description'];
+        $weight = $_REQUEST['weight'];
+        $delivery_date = date("l jS \of F Y h:i:s A");
+        $status = $_REQUEST['status'];
+
+        $query = "UPDATE `couriers` SET `sender_id`='$sender_id',`description`='$description',`weight`='$weight',`delivery_date`='$delivery_date',`status`='$status'";
         $result = mysqli_query($con, $query);
-
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-
-            }
-        } else {
-            echo "No couriers found.";
-        }
-
         mysqli_close($con);
-        // exit;
+        exit;
 
     }
     ?>
@@ -119,7 +115,7 @@
             <form action="" method="post">
                 <input type="hidden" name="sender_id" value="">
                 <input type="hidden" name="receiver_id" value="">
-                <select id="customer_name" name="customer_name" required>
+                <select id="sender_id" name="sender_id" required>
                     <?php
                     $query = "SELECT sender_id FROM senders";
                     $result = mysqli_query($con, $query);

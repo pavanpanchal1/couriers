@@ -19,28 +19,28 @@ require '/opt/lampp/htdocs/mywork/sendmail/phpmailer/PHPMailer-master/src/PHPMai
 
 
 if (isset($_POST["send"])) {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'panchalpavan800@gmail.com';
-    $mail->Password = 'agsvhuzodbfjwzdd';
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port = 465;
+  $mail = new PHPMailer(true);
+  $mail->isSMTP();
+  $mail->Host = 'smtp.gmail.com';
+  $mail->SMTPAuth = true;
+  $mail->Username = 'panchalpavan800@gmail.com';
+  $mail->Password = 'agsvhuzodbfjwzdd';
+  $mail->SMTPSecure = 'ssl';
+  $mail->Port = 465;
 
-    $mail->setFrom('panchalpavan800@gmail.com');
-    // $mail -> addAttachment('index.php'); 
+  $mail->setFrom('panchalpavan800@gmail.com');
+  // $mail -> addAttachment('index.php'); 
 
-    $mail->addAddress($_POST["email"]);
-    $mail->isHTML(true);
+  $mail->addAddress($_POST["email"]);
+  $mail->isHTML(true);
 
-    $mail->Subject = $_POST["subject"];
-    $mail->Body = $_POST["message"];
+  $mail->Subject = $_POST["subject"];
+  $mail->Body = $_POST["message"];
 
-    $mail->send();
+  $mail->send();
 
 
-    echo "
+  echo "
     <script>
       alert('sent successfully');
       document.location.href='index.php';

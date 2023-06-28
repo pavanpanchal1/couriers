@@ -114,14 +114,16 @@
             font-size: 20px;
 
         }
-        .page{
+
+        .page {
             position: relative;
             right: -30%;
             top: 210px;
             overflow: hidden;
-        
+
         }
-        .page img{
+
+        .page img {
             width: 700px;
             height: 500px;
         }

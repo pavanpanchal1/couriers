@@ -30,8 +30,8 @@
             margin: auto;
             position: relative;
             top: 8vh;
-            background-color:#bbc9c160;
-            padding:2rem;
+            background-color: #bbc9c160;
+            padding: 2rem;
             border-radius: 10px;
 
 
@@ -70,11 +70,11 @@
             padding: 10px;
             border-radius: 2px;
         }
-        label{
-            width:fit-content;
+
+        label {
+            width: fit-content;
             font-size: 27px;
-            }
-            
+        }
     </style>
 </head>
 
@@ -85,7 +85,7 @@
     ini_set('display_errors', 1);
     session_start();
     require 'home.php';
-   
+
     require 'con.php';
     if (isset($_REQUEST['sender_name'])) {
         $sender_name = stripslashes($_REQUEST['sender_name']);
@@ -105,31 +105,31 @@
             echo "ERROR";
         }
     } else {
-          ?>
-    <div class="container">
-        <div class="form">
-            <form action="" method="post">
-            <label for="">SENDER DETAILS</label>
-                <input type="hidden" name="sender_id">
-                <div class="sender_name">
-                    <input type="text" name="sender_name" id="sender_name" placeholder="Enter name">
-                </div>
-                <div class="sender_phone">
-                    <input type="tel" name="sender_phone" id="sender_phone" placeholder="Enter mobile number">
-                </div>
-                <div class="sender_email">
-                    <input type="email" name="sender_email" id="sender_email" placeholder="Enter your email">
-                </div>
-                <div class="sender_address">
-                    <input type="text" name="sender_address" id="sender_address" placeholder="Enter your address">
-                </div>
-                <div class="submit">
-                    <input type="submit" value="submit">
-                </div>
-            </form>
+        ?>
+        <div class="container">
+            <div class="form">
+                <form action="" method="post">
+                    <label for="">SENDER DETAILS</label>
+                    <input type="hidden" name="sender_id">
+                    <div class="sender_name">
+                        <input type="text" name="sender_name" id="sender_name" placeholder="Enter name">
+                    </div>
+                    <div class="sender_phone">
+                        <input type="tel" name="sender_phone" id="sender_phone" placeholder="Enter mobile number">
+                    </div>
+                    <div class="sender_email">
+                        <input type="email" name="sender_email" id="sender_email" placeholder="Enter your email">
+                    </div>
+                    <div class="sender_address">
+                        <input type="text" name="sender_address" id="sender_address" placeholder="Enter your address">
+                    </div>
+                    <div class="submit">
+                        <input type="submit" value="submit">
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <?php
+        <?php
     }
     ?>
 </body>

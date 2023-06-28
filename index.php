@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +34,7 @@
             padding: 2rem;
             border-radius: 10px;
         }
+
         input[type=number],
         input[type=text],
         input[type=email] {
@@ -76,9 +78,9 @@
 <body>
     <?php
 
-require 'home.php';
+    require 'home.php';
 
-?>
+    ?>
     <div class="container">
         <div class="form">
             <form action="send.php" method="post">
@@ -92,9 +94,10 @@ require 'home.php';
                 <div class="text">
                     <input type="text" name="message" id="message" placeholder="Message">
                 </div>
-                <input type="submit" value="submit" name="send"> 
+                <input type="submit" value="submit" name="send">
             </form>
         </div>
     </div>
 </body>
+
 </html>

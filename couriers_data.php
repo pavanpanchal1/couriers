@@ -11,7 +11,7 @@ $sql = "SELECT c.couriers_id, c.description, c.weight, c.status, c.delivery_date
         INNER JOIN senders s ON c.sender_id = s.sender_id
         INNER JOIN receivers r ON c.receiver_id = r.receiver_id";
 
-        
+
 $result = mysqli_query($con, $sql);
 $track_id = $_POST['track_id'];
 
@@ -35,13 +35,13 @@ if (mysqli_num_rows($result) > 0) {
             echo "<td>" . " Description: " . $row['description'] .
                 "<br>" . " Weight: " . $row['weight'] .
                 "<br>" . " Delivery Date: " . $row['delivery_date'] .
-                "<br>"."Locatin : ".
+                "<br>" . "Locatin : " .
                 "</td>";
             echo "<td>" . " Name: " . $row['sender_name'] .
                 "<br>" . " Phone number: " . $row['sender_phone'] .
                 "<br>" . " Address: " . $row['sender_address'] .
                 "</td>";
-            echo "<td>" ,"Name : ". $row['receiver_name'] .
+            echo "<td>", "Name : " . $row['receiver_name'] .
                 "<br>" . " Phone Number: " . $row['receiver_phone'] .
                 "<br>" . " Address: " . $row['receiver_address'] .
                 "</td>";
