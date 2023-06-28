@@ -144,7 +144,7 @@
     require 'con.php';
 
     if (isset($_REQUEST['desription '])) {
-        
+
         $description = stripslashes($_REQUEST['description']);
         $description = mysqli_real_escape_string($con, $desription);
 
