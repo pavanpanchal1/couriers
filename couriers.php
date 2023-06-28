@@ -108,7 +108,7 @@
         }
 
         mysqli_close($con);
-        exit;
+        // exit;
 
     }
     ?>
