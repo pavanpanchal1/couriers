@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Specify the files to be added
-                    def filesToAdd = ['index.php']
+                    def filesToAdd = ['home.php']
                     
                     // Loop through the files and add them to the workspace
                     for (String file : filesToAdd) {
